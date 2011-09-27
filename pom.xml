@@ -5,7 +5,7 @@
     <artifactId>BlockLoot</artifactId>
     <version>0.1</version>
     <name>Block Loot</name>
-    <description>Allows a given blocktyp to drop a variety of different things in different worlds.<description>
+    <description>Allows a given blocktype to drop a variety of different things in different worlds.</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.number>UNKNOWN</project.build.number>
