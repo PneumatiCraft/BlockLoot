@@ -1,0 +1,17 @@
+name: Block Loot
+main: com.pneumaticraft.blockloot.BlockLoot
+authors: ['fernferret']
+version: maven-version-number
+commands:
+  bl:
+    description: Generic Highlander Command
+    usage: /<command>
+  blh:
+    description: Generic Highlander Command
+    usage: /<command>
+  blhelp:
+    description: Generic Highlander Command
+    usage: /<command>
+  blsearch:
+    description: Generic Highlander Command
+    usage: /<command>
