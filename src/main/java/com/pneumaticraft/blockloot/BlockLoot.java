@@ -1,9 +1,7 @@
 package com.pneumaticraft.blockloot;
 
-import com.pneumaticraft.blockloot.commands.HelpCommand;
 import com.pneumaticraft.blockloot.listeners.BLBlockListener;
 import com.pneumaticraft.blockloot.listeners.BLEntityListener;
-import com.pneumaticraft.commandhandler.CommandHandler;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -20,8 +18,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BlockLoot extends JavaPlugin {
-    private CommandHandler commandHandler;
-    private BLPermissions permissions;
     private FileConfiguration config;
     private boolean fix;
     private BLBlockListener blockListener;
@@ -31,10 +27,6 @@ public class BlockLoot extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        this.permissions = new BLPermissions(this);
-        this.commandHandler = new CommandHandler(this, permissions);
-
-        this.registerCommands();
         this.registerEvents();
         this.getDataFolder().mkdirs();
         this.loadConfigs();
@@ -49,12 +41,6 @@ public class BlockLoot extends JavaPlugin {
         pm.registerEvent(Event.Type.ENTITY_DEATH, entityListener, Event.Priority.High, this);
     }
 
-    private void registerCommands() {
-        // Intro Commands
-        this.commandHandler.registerCommand(new HelpCommand(this));
-
-    }
-
     @Override
     public void onDisable() {
     }
@@ -63,19 +49,13 @@ public class BlockLoot extends JavaPlugin {
         this.config = YamlConfiguration.loadConfiguration(new File(this.getDataFolder(), "drops.yml"));
     }
 
-    public CommandHandler getCommandHandler() {
-        return this.commandHandler;
-    }
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
         if (!this.isEnabled()) {
             sender.sendMessage("This plugin is Disabled!");
             return true;
         }
-        ArrayList<String> allArgs = new ArrayList<String>(Arrays.asList(args));
-        allArgs.add(0, command.getName());
-        return this.commandHandler.locateAndRunCommand(sender, allArgs);
+        return false;
     }
 
     public FileConfiguration getConfig() {
