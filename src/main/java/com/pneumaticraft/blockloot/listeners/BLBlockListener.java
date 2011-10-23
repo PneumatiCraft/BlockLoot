@@ -13,7 +13,7 @@ import java.util.List;
 public class BLBlockListener extends BlockListener {
     @Override
     public void onBlockBreak(BlockBreakEvent event) {
-        this.duplicateDrops(event.getDrops());
+        //this.duplicateDrops(event.getDrops());
     }
 
     private void duplicateDrops(List<ItemStack> drops) {
