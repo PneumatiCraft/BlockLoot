@@ -13,14 +13,13 @@ import java.util.Random;
 public class BLEntityListener extends EntityListener {
     @Override
     public void onEntityDeath(EntityDeathEvent event) {
-//        System.out.print("=========");
+        // Don't dupe if it's a player
         if (event.getEntity() instanceof Player || event.getDroppedExp() == 0) {
             return;
         }
         int itemMultiplier = this.getItemMultiplier(event.getEntity().getLocation().getWorld().getDifficulty());
 
         // Take one away, the drops already contain 1
-//        System.out.print("Item Multiplier: " + itemMultiplier);
         // Iterate, duping the items.
         List<ItemStack> stackCopy = new ArrayList<ItemStack>();
         stackCopy.addAll(event.getDrops());
@@ -29,9 +28,11 @@ public class BLEntityListener extends EntityListener {
             event.getDrops().addAll(stackCopy);
             i++;
         }
-        event.setDroppedExp((int) Math.pow((double) event.getDroppedExp(), (double) event.getEntity().getLocation().getWorld().getDifficulty().getValue()));
-//        System.out.print("");
-//        System.out.print("");
+        // Take the dropped xp
+        int xpDropped = (int) Math.pow((double) event.getDroppedExp(), (double) event.getEntity().getLocation().getWorld().getDifficulty().getValue());
+        // Final xp is: Dropped ^ Difficulty
+        // This means peaceful will ALWAYS be 1
+        event.setDroppedExp(xpDropped);
     }
 
     private int getItemMultiplier(Difficulty diff) {
@@ -39,10 +40,8 @@ public class BLEntityListener extends EntityListener {
         // Extra bonus for playing on hardest
         maxYeild = (maxYeild == 3) ? 4 : maxYeild;
         Random random = new Random();
+        // Grab a new random number between 1 - 100
         int value = random.nextInt(99) + 1;
-//        System.out.print("1st Random was: " + value);
-//        System.out.print("maxYeild started at: " + maxYeild);
-        // Get a random value between 1 and 100.
         // If that value is above 87, then the user
         // has the posibility of gaining 1 -  difficulty items.
         // Each lower tier takes one away,
@@ -55,14 +54,13 @@ public class BLEntityListener extends EntityListener {
         if (value <= 50) {
             maxYeild--;
         }
-//        System.out.print("maxYeild ended at: " + maxYeild);
+
         if (maxYeild < 1) {
             // If the given yeild is less than one, then the user gets 1 item
             return 1;
         }
 
         int second = random.nextInt(maxYeild) + 1;
-//        System.out.print("2nd Random was: " + second);
         return second;
     }
 }
