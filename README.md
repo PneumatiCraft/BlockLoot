@@ -1,6 +1,6 @@
 BlockLoot is a custom plugin for the PneumatiCraft server meant to increase drops from mobs and blocks in certain worlds. It helps compensate for the added difficulty of playing in those worlds due to the particular configuration in place.
 
-BlockLoot has no configuration to speak of, ''nor is it officially supported outside PneumatiCraft''. To use, simply build (with Maven 2.2: `mvn clean package`), then place the generated JAR in your plugins directory.
+BlockLoot has no configuration to speak of, **nor is it officially supported outside PneumatiCraft**. To use, simply build (with Maven 2.2: `mvn clean package`), then place the generated JAR in your plugins directory.
 
 BlockLoot is provided under the BSD 2-clause license.
 
