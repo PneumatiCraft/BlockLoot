@@ -16,7 +16,6 @@ public class BLBlockListener extends BlockListener {
         
         // 10% of the time, drop an experience orb
         if((new Random()).nextInt(10) == 0) {
-            System.out.println("creating orb");
             Block b = event.getBlock();
             ((ExperienceOrb)b.getWorld().spawn(b.getLocation(), ExperienceOrb.class)).setExperience(1);
         }
