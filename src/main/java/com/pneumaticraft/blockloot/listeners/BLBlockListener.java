@@ -1,19 +1,25 @@
 package com.pneumaticraft.blockloot.listeners;
 
-import org.bukkit.event.Event;
+import org.bukkit.block.Block;
+import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockListener;
-import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.event.entity.EntityListener;
-import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
+import java.util.Random;
 
 public class BLBlockListener extends BlockListener {
     @Override
     public void onBlockBreak(BlockBreakEvent event) {
         //this.duplicateDrops(event.getDrops());
+        
+        // 10% of the time, drop an experience orb
+        if((new Random()).nextInt(10) == 0) {
+            System.out.println("creating orb");
+            Block b = event.getBlock();
+            ((ExperienceOrb)b.getWorld().spawn(b.getLocation(), ExperienceOrb.class)).setExperience(1);
+        }
     }
 
     private void duplicateDrops(List<ItemStack> drops) {

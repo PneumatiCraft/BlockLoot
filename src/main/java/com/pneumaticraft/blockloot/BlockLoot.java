@@ -37,7 +37,7 @@ public class BlockLoot extends JavaPlugin {
         this.blockListener = new BLBlockListener();
         BLEntityListener entityListener = new BLEntityListener();
         PluginManager pm = getServer().getPluginManager();
-        //pm.registerEvent(Event.Type.BLOCK_BREAK, this.blockListener, Event.Priority.High, this);
+        pm.registerEvent(Event.Type.BLOCK_BREAK, this.blockListener, Event.Priority.Normal, this);
         pm.registerEvent(Event.Type.ENTITY_DEATH, entityListener, Event.Priority.High, this);
     }
 
