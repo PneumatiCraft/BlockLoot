@@ -22,6 +22,7 @@
 /manifest.mf
 
 /world
+minecraft
 
 # Mac filesystem dust
 *.DS_Store

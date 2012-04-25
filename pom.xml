@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.pneumaticraft.blockloot</groupId>
     <artifactId>BlockLoot</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
     <name>Block Loot</name>
     <description>Allows a given blocktype to drop a variety of different things in different worlds.</description>
     <properties>
@@ -71,7 +71,7 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.2.5-R1.0</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>

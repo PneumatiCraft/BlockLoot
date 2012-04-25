@@ -3,8 +3,9 @@ package com.pneumaticraft.blockloot.listeners;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.ExperienceOrb;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockListener;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -12,12 +13,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class BLBlockListener extends BlockListener {
+public class BLBlockListener implements Listener {
 
     public static final int DEFAULT_BLOCK_DROP_PROBABILITY = 10;
 
-    @Override
-    public void onBlockBreak(BlockBreakEvent event) {
+    @EventHandler()
+    public void blockBreak(BlockBreakEvent event) {
         //this.duplicateDrops(event.getDrops());
 
         // 10% of the time, drop an experience orb
